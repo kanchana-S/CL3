@@ -1,0 +1,120 @@
+Input:
+package binarysearch;
+
+import java.util.Scanner;
+
+public class Bsearch {
+	
+void bsearch(int[] a,int s,int beg,int last)
+	{
+	     int mid=(beg+last)/2;
+		
+		if(beg<=last)
+		{
+		if(a[mid]==s)
+		{
+		System.out.println("Number present at location:"+(mid+1));
+		}
+		
+		else if(a[mid]<s)
+		{
+			bsearch(a,s,mid+1,last);
+		}
+		
+		else if(a[mid]>s)
+		{
+			bsearch(a,s,beg,mid-1);
+		}
+		}
+		
+		else
+		{
+			System.out.println("Number not found");
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int[] a= new int[10];
+		int n,i,j,temp,s,ans;
+		bsearch b = new bsearch() ;
+		
+	   Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("\nEnter the number of elements in array :");
+		
+		n=scanner.nextInt();
+		
+		System.out.println("Enter values in array: ");
+		
+		for(i=0;i<n;i++)
+		{
+			a[i]=scanner.nextInt();
+		}
+		
+		System.out.println("Print array values:");
+		
+		for(i=0;i<n;i++)
+		{
+			System.out.print(a[i]);
+			System.out.print("   ");
+		}
+			
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<n;j++)
+			{
+				if(a[i]<a[j])
+				{
+					temp=a[i];
+					a[i]=a[j];
+					a[j]=temp;
+					
+				}
+			}
+		}
+		
+		System.out.println("\n Sorted array is: ");
+		for(i=0;i<n;i++)
+		{
+			System.out.print(a[i]);
+			System.out.print("   ");
+		}
+		
+		do
+		{
+		System.out.println("\n Enter the number to be searched:");
+		s=scanner.nextInt();
+		
+		b.bsearch(a,s,0,n);
+		System.out.println("\nWant to search more elements:");
+		ans=scanner.nextInt();
+		}while(ans==1);
+		
+		}
+
+}
+
+Output:
+
+Enter the number of elements in array :
+3
+Enter values in array: 
+55 33 45
+Print array values:
+55   33   45   
+ Sorted array is: 
+33   45   55   
+Enter the number to be searched:
+45
+Number present at location:2
+
+Want to search more elements:
+1
+Enter the number to be searched:
+40
+Number not found
+
+Want to search more elements:
